@@ -1,122 +1,55 @@
 # Finova
 
-> Modern Personal Finance Management Platform
+Личное финансовое пространство на React и FastAPI. Портфолио-версия с русским интерфейсом, адаптивной вёрсткой, цветным профилем и интерактивными отчётами.
 
-A production-inspired full-stack application built with FastAPI, React, SQLAlchemy, and Chart.js.
+## Запуск демоверсии
 
-Designed to demonstrate modern backend architecture, clean code practices, and financial domain modeling.
+Нужен Node.js 22.12+ (или 20.19+).
 
-Finova is a full-stack personal finance management platform designed to help users understand, organize, and improve their financial life.
-
-The project is being developed as a production-style application using modern backend and frontend technologies while following clean architecture principles.
-
----
-
-## Engineering Principles
-
-Finova is developed following these principles:
-
-- Clean Architecture
-- SOLID
-- DRY
-- KISS
-- RESTful API Design
-- Type Safety
-- Scalability
-- Maintainability
-- Testability
-
-## Features
-
-### Current
-
-- Income & Expense Tracking
-- Categories
-- Dashboard
-- Financial Analytics
-- Reports
-- REST API
-- SQLite Database
-
-### Planned
-
-- Budget Management
-- Financial Goals
-- Recurring Transactions
-- AI Financial Assistant
-- Investment Tracking
-- Multi-currency Support
-- Bank Integration
-
----
-
-## Tech Stack
-
-### Backend
-
-- FastAPI
-- SQLAlchemy 2
-- Alembic
-- SQLite
-- Pydantic
-
-### Frontend
-
-- React
-- Vite
-- Chart.js
-- Axios
-
----
-
-## Architecture
-
-```text
-React
-     │
- REST API
-     │
-FastAPI
-     │
-Service Layer
-     │
-Repository Layer
-     │
-SQLAlchemy
-     │
-SQLite
+```powershell
+cd frontend
+npm ci
+npm run dev
 ```
 
----
+Откройте адрес, напечатанный Vite (обычно http://localhost:5173). Сервер API для демонстрации не нужен. При первом открытии создаются примеры операций за шесть месяцев относительно текущей даты.
 
-## Project Goals
+## Что можно показать
 
-Finova is more than a simple expense tracker.
+- **Обзор:** общий баланс, доходы и расходы выбранного месяца, уровень сбережений, денежный поток и распределение расходов.
+- **Операции:** добавление доходов и расходов, поиск, фильтр по типу, выбор месяца, экспорт выбранных записей в CSV.
+- **Аналитика:** динамическая диаграмма за шесть месяцев, категории расходов и сводка выбранного месяца.
+- **Мои цели:** создание цели и обновление накопленной суммы с индикатором прогресса.
+- **Профиль:** редактирование имени, почты и описания, четыре цветовых палитры, персональные цели и показатели активности.
 
-The main goal is to build a scalable Personal Finance Management Platform following modern software engineering practices.
+Демоданные, профиль и цели сохраняются в localStorage текущего браузера. Для первоначального состояния удалите ключи `finova.operations.v1`, `finova.goals.v1`, `finova.profile.v1` через инструменты разработчика. Пополнение цели изменяет только план накоплений, без списания с баланса.
 
-The project focuses on:
+## Подключение API
 
-- Clean Architecture
-- RESTful API
-- SOLID Principles
-- Scalable Database Design
-- Production-ready Code
-- Professional Documentation
+```powershell
+cd backend
+python -m venv .venv
+.\.venv\Scripts\python -m pip install -r requirements.txt
+.\.venv\Scripts\python -m uvicorn app.main:app --reload
+```
 
----
+Скопируйте `frontend/.env.example` в `frontend/.env.local` и раскомментируйте `VITE_API_URL`. Перезапустите Vite. Приложение создаст демонстрационного пользователя через существующий endpoint, загрузит его категории и операции. Новые операции сохраняются через API; профиль и цели продолжают храниться в браузере. Данные деморежима на сервер автоматически не переносятся. Если API недоступен, интерфейс явно сообщает о переходе в локальный режим.
 
-## Future Vision
+Документация API: http://127.0.0.1:8000/docs. SQLite создаётся при запуске backend. Доступ с localhost:5173 и 127.0.0.1:5173 разрешён настройками CORS.
 
-The long-term vision is to transform Finova into a complete financial ecosystem that helps users:
+## Проверки и сборка
 
-- understand spending habits
-- build healthy financial routines
-- achieve financial goals
-- improve financial health using AI-powered insights
+```powershell
+cd frontend
+npm run lint
+npm run build
+npm run preview
+```
 
----
+Готовые статические файлы находятся в `frontend/dist`.
 
-## Status
+## Технологии и границы версии
 
-🚧 Active Development
+React 19, Vite 8, CSS, SVG favicon; FastAPI, SQLAlchemy, Pydantic, SQLite, Alembic. Диаграммы построены на CSS и рассчитываются по операциям, без внешней библиотеки графиков. Интерфейс поддерживает клавиатурный фокус, закрытие диалогов Escape и уменьшение анимаций.
+
+Это демонстрационная версия для портфолио. В API пока нет авторизации и изоляции данных на уровне доступа; endpoint списка операций возвращает все записи, а интерфейс выбирает записи демопользователя. Для публичной работы с реальными финансовыми данными нужны авторизация, проверка прав на сервере и серверное хранение профиля и целей. Редактирование и удаление операций, банковские интеграции и автоматические платежи в эту версию не входят.

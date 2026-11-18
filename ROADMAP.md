@@ -1,58 +1,25 @@
 # Finova Roadmap
 
-## Version 1.0 — Core
+## Портфолио-версия — готово
 
-- [ ] User Management
-- [ ] Categories
-- [ ] Operations CRUD
-- [ ] Dashboard
-- [ ] Reports
-- [ ] Analytics
-- [ ] Charts
-- [ ] Search
-- [ ] Filters
+- [x] Адаптивный финансовый кабинет
+- [x] Доходы и расходы: добавление и история
+- [x] Категории операций
+- [x] Обзор баланса и месячных показателей
+- [x] Динамические диаграммы и аналитика
+- [x] Поиск, фильтры и выбор месяца
+- [x] Экспорт CSV
+- [x] Локальные цели и прогресс накоплений
+- [x] Редактируемый локальный профиль и четыре палитры
+- [x] Автономная демоверсия с сохранением в браузере
+- [x] Подключение существующего FastAPI API через переменную окружения
 
----
+## Следующий этап: многопользовательский продукт
 
-## Version 1.5 — Budgeting
-
-- [ ] Budget Management
-- [ ] Budget Progress
-- [ ] Overspending Alerts
-- [ ] Financial Goals
-
----
-
-## Version 2.0 — Advanced Finance
-
-- [ ] Recurring Operations
-- [ ] Cash Flow
-- [ ] Monthly Closing
-- [ ] Net Worth
-
----
-
-## Version 3.0 — Investments
-
-- [ ] Investment Portfolio
-- [ ] Asset Tracking
-- [ ] Multi-currency
-- [ ] Family Budget
-
----
-
-## Version 4.0 — AI
-
-- [ ] Financial Health Score
-- [ ] Spending Predictions
-- [ ] Personalized Insights
-- [ ] AI Assistant
-
----
-
-## Version 5.0 — Integrations
-
-- [ ] CSV Import
-- [ ] Excel Import
-- [ ] Bank Synchronization
-- [ ] Mobile Application
+- [ ] Авторизация и проверка прав на сервере
+- [ ] Серверное хранение профиля и целей
+- [ ] Редактирование и удаление операций
+- [ ] Бюджеты и лимиты категорий
+- [ ] Повторяющиеся операции
+- [ ] Импорт данных и банковские интеграции
+- [ ] Мультивалютность
